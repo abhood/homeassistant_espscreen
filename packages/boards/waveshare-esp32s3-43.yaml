@@ -60,7 +60,18 @@ substitutions:
 # ============================================================
 
 esp32:
-  flash_size: 16MB
+  # https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-4.3
+  board: esp32-s3-devkitc-1
+  variant: esp32s3
+  flash_size: 8MB
+  framework:
+    type: esp-idf
+    sdkconfig_options:
+      CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240: y
+      CONFIG_ESP32S3_DATA_CACHE_64KB: y
+      CONFIG_SPIRAM_FETCH_INSTRUCTIONS: y
+      CONFIG_SPIRAM_RODATA: y
+      CONFIG_ESPTOOLPY_FLASHSIZE_8MB: y
 
 display:
   # The timings are Waveshare's own (ESP32_Display_Panel, BOARD_WAVESHARE_ESP32_S3_TOUCH_LCD_4_3.h), not the
